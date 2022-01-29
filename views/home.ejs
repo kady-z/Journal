@@ -1,12 +1,24 @@
 <%- include('partials/header') -%>
 
-<h1> Home</h1>
+<div class="home">
+    <div class="home__content">
+        <div class="home__sub--content">
+            <h1>My Journal</h1>
+            <em> " Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque aspern <br> 
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque aspern "</em>
+        </div> 
+    </div>
+</div>
 
-<p> <%= start %> </p>
-
-<% posts.forEach( function ( element ) { %>
-    <h3> <%= element.postTitle %> </h3>
-    <p> <%= element.postContent %> </p>   
-<% }); %>
+<div class="content">
+    <% posts.forEach( function ( element ) { %>
+        <hr>
+        <h3> <%= element.postTitle %> </h3>
+        <p> 
+            <%= element.postContent.slice(0,100) + " ..." %>
+            <a href="/posts/<%= element.postTitle%>">Read More</a> 
+        </p>   
+    <% }); %>
+</div>
 
 <%- include('partials/footer') -%>

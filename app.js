@@ -21,11 +21,8 @@ app.set('view engine', 'ejs');
 app.get("/" , function (req, res) {
 
   res.render('home', {
-
-    start: homeStartingContent,
     posts: posts
-
-  } );
+  });
 
 });
 
@@ -73,6 +70,7 @@ app.get("/posts/:random", function (req, res) {
   
   let random = req.params.random;
   random = lodash.lowerCase(random);
+  let found = "false";
   
   posts.forEach( function ( element) {
   
@@ -80,18 +78,17 @@ app.get("/posts/:random", function (req, res) {
     title = lodash.lowerCase(title);
   
     if(title === random) {
+      found = "true";
        res.render('post', {
          postTitle: title,
          postContent: element.postContent
        });
     }
-  
-    else {
-      res.send("bye"); 
-    }
-  
   });
 
+  if(found === "false") {
+    res.send("Not found!!");
+  }
 
 });
 
