@@ -124,9 +124,9 @@ app.get("/posts/:random", function (req, res) {
   }
 
 });
+const PORT = process.env.PORT || 3030;
+app.listen(PORT, function () {
 
-app.listen(3000, function () {
-
-  console.log("server is running");
+  console.log("server is running: ", PORT);
 
 });
